@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Favorites</title>
+    <link rel="stylesheet" href="/public/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Movie Favorites</h1>
+        <form action="/search" method="POST">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" placeholder="Enter a movie or TV show title" required>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+        <a class="btn btn-info" href="/favorites">View Favorites</a>
+    </div>
+    <script>
+        app.get('/', async (req, res) => {
+    // const searchQuery = req.body.search;
+    var movies;
+    try {
+        const response = await axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=3a2a4cf1`);
+        const movies = response.data;
+        // console.log(movies)
+        res.render(__dirname + '/views/index.html', { movies });
+        document.getElementById()
+    } catch (error) {
+        console.error(error);
+        res.redirect('/');
+    }
+});
+
+    </script>
+</body>
+</html>
